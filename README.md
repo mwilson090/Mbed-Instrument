@@ -11,7 +11,7 @@
 </ul>
 
 <h2>how to play</h2>
--manuever the board 
--x-axis: dictates notes
--y-axis: dictates volume
+<p>-manuever the board </p>
+<p>-x-axis: dictates notes</p>
+<p>-y-axis: dictates volume</p>
 button: press to rest
