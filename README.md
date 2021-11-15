@@ -1,6 +1,6 @@
-# mbed-instrument
+<h1>mbed-instrument</h1>
 
-#components
+<h2>components</h2>
 <ul>
   <li>mbed</li>
   <li>push button</li>
@@ -10,8 +10,8 @@
   <li>speaker</li>
 </ul>
 
-#how to play
-manuever the board 
-x-axis: dictates notes
-y-axis: dictates volume
+<h2>how to play</h2>
+-manuever the board 
+-x-axis: dictates notes
+-y-axis: dictates volume
 button: press to rest
