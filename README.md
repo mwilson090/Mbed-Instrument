@@ -14,4 +14,4 @@
 <p>-manuever the board </p>
 <p>-x-axis: dictates notes</p>
 <p>-y-axis: dictates volume</p>
-button: press to rest
+<p>-button: press to rest</p>
