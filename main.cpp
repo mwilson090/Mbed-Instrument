@@ -2,7 +2,12 @@
 #include "MMA8452.h"
 #include "uLCD_4DGL.h"
 #include "PinDetect.h"
- 
+
+PwmOut red(p25);
+PwmOut green(p24);
+PwmOut blue(p23);
+
+PinDetect pb(p22);
  
 uLCD_4DGL uLCD(p13, p14, p30); // create a global uLCD object
  
@@ -10,18 +15,23 @@ Serial pc(USBTX,USBRX); //not used in this program
 
 PwmOut speaker(p21);
 
-//PinDetect pb1(p15);
-//PinDetect pb2(p16);
+void rest(){
+    speaker = 0.0; //turn off speaker for rest
+    red = 0.0;
+    green = 0.0;
+    blue = 0.0;
+}
 
 int main() {
+   pb.mode(PullUp);
+   
+   pb.attach_asserted(&rest); //rest when button pushed
    
    // you can play around with the parameters to see the response
    int radius = 10;
    int offsetx = 63;
    int offsety = 63;
    double factor = 50;
-   double music_factor = 200;
-   bool MusicOn = false;
    
    double highC = -0.923;
    double B = highC + 0.0769;
@@ -71,75 +81,104 @@ int main() {
       if(x < highC){
         speaker.period(1.0/1047); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =1.0;
+        green =1.0;
+        blue =1.0;
       } 
       else if(x < B){
         speaker.period(1.0/988); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =1.0;
+        green =0.0;
+        blue =0.0;
       }
       else if(x < bFlat){
         speaker.period(1.0/932); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =0.0;
+        green =1.0;
+        blue =0.5;
       }
       else if(x < A){
         speaker.period(1.0/880); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =1.0;
+        green =1.0;
+        blue =0.0;
       }
       else if(x < aFlat){
         speaker.period(1.0/831); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =0.5;
+        green =0.0;
+        blue =1.0;
       }
       else if(x < G){
         speaker.period(1.0/784); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =0.0;
+        green =1.0;
+        blue =0.0;
       }
       else if(x < gFlat){
         speaker.period(1.0/740); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =1.0;
+        green =0.5;
+        blue =0.5;
       }
       else if(x < F){
         speaker.period(1.0/698); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =0.0;
+        green =1.0;
+        blue =1.0;
       }
       else if(x < E){
         speaker.period(1.0/659); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =0.5;
+        green =1.0;
+        blue =0.0;
       }
       else if(x < eFlat){
         speaker.period(1.0/622); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =1.0;
+        green =0.0;
+        blue =1.0;
       }
       else if(x < D){
         speaker.period(1.0/587); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =0.5;
+        green =0.5;
+        blue =1.0;
       }
       else if(x < dFlat){
         speaker.period(1.0/554); 
         speaker =0.25; //25% duty cycle - mid range volume
+        red =1.0;
+        green =0.0;
+        blue =0.5;
       }
       else if(x < C){
         speaker.period(1.0/523); 
-        speaker =0.25; //25% duty cycle - mid range volume
+        speaker = 0.25; //25% duty cycle - mid range volume
+        red =0.0;
+        green =0.0;
+        blue =1.0;
       }
       else {
-          speaker=0.0;
+          speaker =0.0;
+          red =0.0;
+          green =0.0;
+          blue =0.0;
       }
       
       wait(3);
       
       uLCD.circle(-1*y*factor+offsety, -1*x*factor+offsetx, radius, WHITE);
-      /*
-      if (MusicOn)
-           mySpeaker.PlayNote(440.0+x*music_factor,0.25+0.2*y,0.05);
-      
-      if (pb1 == false)
-           MusicOn = true;
-           
-      if (pb2 == false)
-            MusicOn = false;
-        */        
-                 
-      // You can uncomment this line to see the values coming off the MMA8452           
-      //uLCD.printf("\n(%.2f,%.2f,%.2f)  \n", x,y,z);
       
       } //end else
       
