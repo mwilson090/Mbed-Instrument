@@ -56,35 +56,6 @@ int main() {
    
    pb.attach_asserted(&rest); //rest when button pushed
 
-   #include "mbed.h"
-#include "MMA8452.h"
-#include "uLCD_4DGL.h"
-#include "PinDetect.h"
-
-PwmOut red(p25);
-PwmOut green(p24);
-PwmOut blue(p23);
-
-PinDetect pb(p22);
- 
-uLCD_4DGL uLCD(p13, p14, p30); // create a global uLCD object
- 
-Serial pc(USBTX,USBRX); //not used in this program
-
-PwmOut speaker(p21);
-
-void rest(){
-    speaker = 0.0; //turn off speaker for rest
-    red = 0.0;
-    green = 0.0;
-    blue = 0.0;
-}
-
-int main() {
-   pb.mode(PullUp);
-   
-   pb.attach_asserted(&rest); //rest when button pushed
-
    pb.setSampleFrequency(); 
    
    // you can play around with the parameters to see the response
