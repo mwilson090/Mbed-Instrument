@@ -19,6 +19,7 @@ void rest(){
     red = 0.0;
     green = 0.0;
     blue = 0.0;
+    wait(1);
 }
 
 int main() {
@@ -41,13 +42,7 @@ int main() {
    double D = eFlat + 0.0769;
    double dFlat = D + 0.0769;
    double C = dFlat + 0.0760;
-   
-   //set the push buttons that control sounds
-   //pb1.mode(PullUp);
-   //pb2.mode(PullUp);
-   //I will not use interupts like in jazzy tunes
- 
-   
+
    double x = 0, y = 0, z = 0;
  
    MMA8452 acc(p9, p10, 40000);  //instantiate an acc object! 
