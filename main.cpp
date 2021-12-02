@@ -1,6 +1,5 @@
 #include "mbed.h"
 #include "MMA8452.h"
-#include "uLCD_4DGL.h"
 #include "PinDetect.h"
 
 PwmOut red(p25);
@@ -28,12 +27,6 @@ int main() {
    pb.attach_asserted(&rest); //rest when button pushed
 
    pb.setSampleFrequency(); 
-   
-   // you can play around with the parameters to see the response
-   int radius = 10;
-   int offsetx = 63;
-   int offsety = 63;
-   double factor = 50;
    
    double highC = -0.923;
    double B = highC + 0.0769;
@@ -67,7 +60,7 @@ int main() {
    
    while(1) {
       
-      uLCD.circle(-1*y*factor+offsety, -1*x*factor+offsetx, radius, BLACK);
+      //uLCD.circle(-1*y*factor+offsety, -1*x*factor+offsetx, radius, BLACK);
        
       if(!acc.isXYZReady()) 
       {
@@ -82,109 +75,101 @@ int main() {
       
       if(x < highC){
         speaker.period(1.0/1047); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =1.0;
         green =1.0;
         blue =1.0;
       } 
       else if(x < B){
         speaker.period(1.0/988); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =1.0;
         green =0.0;
         blue =0.0;
       }
       else if(x < bFlat){
         speaker.period(1.0/932); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =0.0;
         green =1.0;
         blue =0.5;
       }
       else if(x < A){
         speaker.period(1.0/880); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =1.0;
         green =1.0;
         blue =0.0;
       }
       else if(x < aFlat){
         speaker.period(1.0/831); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =0.5;
         green =0.0;
         blue =1.0;
       }
       else if(x < G){
         speaker.period(1.0/784); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =0.0;
         green =1.0;
         blue =0.0;
       }
       else if(x < gFlat){
         speaker.period(1.0/740); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =1.0;
         green =0.5;
         blue =0.5;
       }
       else if(x < F){
         speaker.period(1.0/698); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =0.0;
         green =1.0;
         blue =1.0;
       }
       else if(x < E){
         speaker.period(1.0/659); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =0.5;
         green =1.0;
         blue =0.0;
       }
       else if(x < eFlat){
         speaker.period(1.0/622); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =1.0;
         green =0.0;
         blue =1.0;
       }
       else if(x < D){
         speaker.period(1.0/587); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =0.5;
         green =0.5;
         blue =1.0;
       }
       else if(x < dFlat){
         speaker.period(1.0/554); 
-        speaker =0.25; //25% duty cycle - mid range volume
         red =1.0;
         green =0.0;
         blue =0.5;
       }
       else if(x < C){
         speaker.period(1.0/523); 
-        speaker = 0.25; //25% duty cycle - mid range volume
         red =0.0;
         green =0.0;
         blue =1.0;
       }
       else {
-          speaker =0.0;
-          red =0.0;
-          green =0.0;
-          blue =0.0;
+        red =0.0;
+        green =0.0;
+        blue =0.0;
       }
       
-      wait(3);
+      //set volume based on y-axis position
+      if(y < 0){
+        speaker = 0.0;
+      }
+      else {
+        speaker = y/2; //volume range ~0-50% duty cycle
+      }
       
-      uLCD.circle(-1*y*factor+offsety, -1*x*factor+offsetx, radius, WHITE);
+      wait(1);
+      
+      //uLCD.circle(-1*y*factor+offsety, -1*x*factor+offsetx, radius, WHITE);
       
       } //end else
       
    } //end infinite while loop
 } // end main
-   
- 
