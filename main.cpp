@@ -8,8 +8,6 @@ PwmOut blue(p23);
 
 PinDetect pb(p22);
  
-uLCD_4DGL uLCD(p13, p14, p30); // create a global uLCD object
- 
 Serial pc(USBTX,USBRX); //not used in this program
 
 PwmOut speaker(p21);
@@ -150,6 +148,7 @@ int main() {
         red =0.0;
         green =0.0;
         blue =0.0;
+        speaker = 0.0;
       }
       
       //set volume based on y-axis position
