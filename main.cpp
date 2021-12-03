@@ -12,6 +12,8 @@ Serial pc(USBTX,USBRX); //not used in this program
 
 PwmOut speaker(p21);
 
+double Song[100];
+
 double highC = -0.923;
 double B = highC + 0.0769;
 double bFlat = B + 0.0769;
@@ -37,12 +39,12 @@ void rest(){
     }
 }
 
-void setNote(){
+void setNote(int i){
     if(x < highC){
         speaker.period(1.0/1047); 
         red =1.0;
         green =1.0;
-        blue =1.0;
+        blue =1.0; 
       } 
       else if(x < B){
         speaker.period(1.0/988); 
@@ -133,6 +135,7 @@ void setNote(){
       else {
         speaker = y/2; //volume range ~0-50% duty cycle
       }
+      Song[i] = x;
 }
 
 int main() {
@@ -149,8 +152,8 @@ int main() {
    acc.setDynamicRange(MMA8452::DYNAMIC_RANGE_4G);
    acc.setDataRate(MMA8452::RATE_100);
    
-   
-   while(1) {
+   int i;
+   while(i < 100) {
       
       //uLCD.circle(-1*y*factor+offsety, -1*x*factor+offsetx, radius, BLACK);
        
@@ -163,15 +166,19 @@ int main() {
       
       acc.readXYZGravity(&x,&y,&z); //notice this is passed by reference use pointers
       
-      setNote();
+      setNote(i);
       
-      pc.printf("%f, %f, %f\n", x, y, z);
+      i++;
+      
+      pc.printf("%f, %f, %f\n\n", x, y, z);
       
       wait(1);
       
       //uLCD.circle(-1*y*factor+offsety, -1*x*factor+offsetx, radius, WHITE);
       
-      } //end else
-      
+      } //end else 
    } //end infinite while loop
+   for(int i=0; i<100; i++){
+        pc.printf("Note %f: %f\n\n", i, Song[i]);
+    }
 } // end main
