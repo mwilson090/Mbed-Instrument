@@ -29,11 +29,12 @@ double C = dFlat + 0.0760;
 double x = 0, y = 0, z = 0;
 
 void rest(){
-    speaker = 0.0; //turn off speaker for rest
-    red = 0.0;
-    green = 0.0;
-    blue = 0.0;
-    wait(1);
+    while(pb){
+        speaker = 0.0; //turn off speaker for rest
+        red = 0.0;
+        green = 0.0;
+        blue = 0.0;
+    }
 }
 
 void setNote(){
