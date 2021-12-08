@@ -17,12 +17,14 @@
   <li>Class D High-Efficiency Audio Amp</li>
   <li>Speaker</li>
   <li>ESP8266 Huzzah</li>
+  <li>External 5V Supply</li>
 </ul>
 
 <h2>Wiring</h2>
+
 <table>
   <tr>
-    <th>mbed</th>
+    <th>Mbed</th>
     <th>Class D High-Efficiency Audio Amp</th>
     <th>Speaker</th>
   </tr>
@@ -56,6 +58,39 @@
     <td></td>
     <td>	out -</td>
     <td>-</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Huzzah</th>
+    <th>Mbed</th>
+    <th>External 5V Supply</th>
+  </tr>
+  <tr>
+    <td>gnd</td>
+    <td>gnd</td>
+    <td>gnd</td>
+  </tr>
+  <tr>
+    <td>TX</td>
+    <td>RX- P27</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>RX</td>
+    <td>TX- P28</td>
+    <td></td>
+  </tr>
+    <tr>
+    <td>V+</td>
+    <td></td>
+    <td>5V DC</td>
+  </tr>
+    <tr>
+    <td>RST</td>
+    <td>P26 (Optional)</td>
+    <td></td>
   </tr>
 </table>
 
