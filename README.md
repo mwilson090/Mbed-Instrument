@@ -73,24 +73,47 @@
     <td>gnd</td>
   </tr>
   <tr>
-    <td>TX</td>
-    <td>RX- P27</td>
+    <td>tx</td>
+    <td>rx- p27</td>
     <td></td>
   </tr>
   <tr>
-    <td>RX</td>
-    <td>TX- P28</td>
+    <td>rx</td>
+    <td>tx- p28</td>
     <td></td>
   </tr>
     <tr>
-    <td>V+</td>
+    <td>v+</td>
     <td></td>
     <td>5V DC</td>
   </tr>
     <tr>
-    <td>RST</td>
-    <td>P26 (Optional)</td>
+    <td>rest</td>
+    <td>p26 (Optional)</td>
     <td></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Mbed</th>
+    <th>MMA8452 Accelerometer</th>
+  </tr>
+  <tr>
+    <td>v+</td>
+    <td>3.3V</td>
+  </tr>
+  <tr>
+    <td>p9</td>
+    <td>sda</td>
+  </tr>
+  <tr>
+    <td>p10</td>
+    <td>scl</td>
+  </tr>
+  <tr>
+    <td>gnd</td>
+    <td>gnd</td>
   </tr>
 </table>
 
