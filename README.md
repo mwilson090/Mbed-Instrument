@@ -1,6 +1,6 @@
 <h1>mbed-instrument</h1>
 
-<p>The mbed instrument plays music based on motion. It connects to wifi, displaying the song played on a webpage. </p>
+<p>The mbed instrument plays music based on motion. It connects to wifi, a webpage enables it to start/stop playing and can set an initial volume. </p>
 
 <img src= "https://github.gatech.edu/storage/user/20775/files/572f57d0-301e-480f-99d9-6740fc22419a" />
 
@@ -159,7 +159,7 @@
 <h2>Set Up</h2>
 <ol>
   <li>Complete wiring connections.</li>
-  <li>Upload code to the mbed compiler. Change "ssid" and "password" to your wifi name and password and compile code to the mbed.</li>
+  <li>Upload code to the mbed compiler. Change "ssid" and "pwd" to your wifi name and password and compile code to the mbed.</li>
   <img src="https://github.gatech.edu/storage/user/20775/files/e191742f-7de6-4452-bab9-6ea9a929b0f0" />
   <li>Make sure your computer is connected to the same wifi network in the code. Open TeraTerm and connect to your mbed. Press mbed reset button.</li>
   <img src="https://github.gatech.edu/storage/user/20984/files/baa75624-a21d-4d0c-b9bd-4eae42bca201">
