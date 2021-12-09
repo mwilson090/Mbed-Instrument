@@ -41,6 +41,8 @@
   </tr>
 </table>
 
+<img src="https://github.gatech.edu/storage/user/20775/files/f814c105-3215-4edf-9cc5-7f532b86413c" />
+
 <table>
   <tr>
     <th>Mbed</th>
@@ -48,11 +50,11 @@
   </tr>
   <tr>
     <td>p21</td>
-    <td></td>
+    <td>C</td>
   </tr>
   <tr>
     <td>gnd</td>
-    <td>gnd</td>
+    <td>A</td>
   </tr>
 </table>
 
@@ -111,6 +113,9 @@
     <td></td>
   </tr>
 </table>
+
+<p>The external 5V DC barrel jack is connected to ground from the mbed and outputs 5V power. </p>
+<img src="https://github.gatech.edu/storage/user/20775/files/cb19a71a-bd11-422f-bdec-170441f5deaf" />
 
 <table>
   <tr>
